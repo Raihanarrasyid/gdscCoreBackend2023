@@ -3,7 +3,10 @@ import Post from "../models/Post.js";
 export const postPost = async (req, res) => {
     try {
         const { title, content, tags } = req.body;
-        const formattedTags = tags.split(" ");
+        let formattedTags = [];
+        if (tags) {
+            formattedTags = tags.split(" ");
+        }
         const post = new Post({
             title,
             content,
@@ -58,7 +61,10 @@ export const updatePostById = async (req, res) => {
             return res.status(400).json({ message: "Invalid request" });
         }
         const { title, content, tags } = req.body;
-        const formattedTags = tags.split(" ");
+        let formattedTags = [];
+        if (tags) {
+            formattedTags = tags.split(" ");
+        }
         const updatedPost = await Post.findByIdAndUpdate(
             req.params.id,
             {

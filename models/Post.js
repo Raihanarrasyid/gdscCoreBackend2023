@@ -17,11 +17,6 @@ const postSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    type: {
-        type: String,
-        required: true,
-        enum: ["post", "question"],
-    },
     tags: {
         type: Array,
         default: [],

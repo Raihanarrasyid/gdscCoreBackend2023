@@ -15,7 +15,7 @@ const router = express.Router();
 
 router.get("/", verifyToken,getAllCommentsFromUser);
 
-router.post("/", verifyToken, postComment);
+router.post("/:id", verifyToken, postComment);
 
 router.patch("/:id", verifyToken, updateCommentById);
 

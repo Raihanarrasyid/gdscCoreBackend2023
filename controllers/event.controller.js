@@ -3,7 +3,10 @@ import Event from "../models/Event.js";
 export const postEvent = async (req, res) => {
   try {
     const { title, content, eventTime, location, tags } = req.body;
-    const formattedTags = tags.split(" ");
+    let formattedTags = [];
+    if (tags) {
+      formattedTags = tags.split(" ");
+    }
     const event = new Event({
       title,
       content,
@@ -53,7 +56,10 @@ export const updateEventById = async (req, res) => {
       return res.status(400).json({ message: "Invalid request" });
     }
     const { title, content, eventTime, location, tags } = req.body;
-    const formattedTags = tags.split(" ");
+    let formattedTags = [];
+    if (tags) {
+      formattedTags = tags.split(" ");
+    }
     const updatedEvent = await Event.findByIdAndUpdate(
       req.params.id,
       {
